@@ -3,3 +3,25 @@
 При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
 */
 
+Console.Clear();
+
+Console.Write("Введите размерность массива: ");
+int size = int.Parse(Console.ReadLine());
+
+string[] originalArray = new string[size];
+
+Console.WriteLine("Введите строки массива:");
+for (int i = 0; i < size; i++)
+{
+    Console.Write($"Элемент {i + 1}: ");
+    originalArray[i] = Console.ReadLine();
+}
+
+string[] newArray = FilterArray(originalArray);
+
+Console.WriteLine("\nНовый массив из строк, длина которых меньше либо равна 3 символам:");
+foreach (string str in newArray)
+{
+    Console.WriteLine(str);
+}
+
