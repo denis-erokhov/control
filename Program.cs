@@ -3,53 +3,27 @@
 При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
 */
 
+
 Console.Clear();
 
-Console.Write("Введите размерность массива: ");
-int size = int.Parse(Console.ReadLine());
+Console.Write("Введите длину массива: ");
+int n = int.Parse(Console.ReadLine()!);
+Console.WriteLine($"Введите любые {n} строк(-и) через Enter:");
+string[] strArray = new string[n];
 
-string[] originalArray = new string[size];
-
-Console.WriteLine("Введите строки массива:");
-for (int i = 0; i < size; i++)
-{
-    Console.Write($"Элемент {i + 1}: ");
-    originalArray[i] = Console.ReadLine();
-}
-
-string[] newArray = FilterArray(originalArray);
-
-Console.WriteLine("\nНовый массив из строк, длина которых меньше либо равна 3 символам:");
-foreach (string str in newArray)
-{
-    Console.WriteLine(str);
-}
-
-
-static string[] FilterArray(string[] inputArray)
-{
-int count = 0;
-
-for (int i = 0; i < inputArray.Length; i++)
-{
-    if (inputArray[i].Length <= 3)
+    for (int i = 0; i < strArray.Length; i++)
     {
-        count++;
+        strArray[i] = Console.ReadLine()!;
     }
-}
+    Console.WriteLine($"Начальный массив: [{string.Join(" ", strArray)} ]");
 
-string[] newArray = new string[count];
+    System.Console.Write("Конечный массив: [");
 
-int index = 0;
-for (int i = 0; i < inputArray.Length; i++)
-{
-    if (inputArray[i].Length <= 3)
+    for (int i = 0; i < strArray.Length; i++)
     {
-        newArray[index] = inputArray[i];
-        index++;
+        if (strArray[i].Length <= 3)
+        {
+            Console.Write($"{strArray[i]} ");
+        }
     }
-}
-
-return newArray;
-}
-
+    System.Console.WriteLine("]");
